@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_tools">
+
+        <RadioButton
+            android:id="@+id/circle_DEG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/circle_sexagesimal" />
+
+        <RadioButton
+            android:id="@+id/circle_rad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/circle_radial" />
+
+        <RadioButton
+            android:id="@+id/circle_Grad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/circle_gradian" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_tools"
+        android:onClick="onClick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+</androidx.constraintlayout.widget.ConstraintLayout>
