@@ -95,6 +95,17 @@
                     android:onClick="onClick"
                     android:text="@string/btn_div"
                     android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/button_sin"
+
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="@string/btn_sen"
+                    android:textSize="24sp" />
             </TableRow>
 
             <TableRow
@@ -144,6 +155,17 @@
                     android:layout_weight="1"
                     android:onClick="onClick"
                     android:text="@string/btn_mul"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/button_cos"
+
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="@string/btn_cos"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -195,6 +217,17 @@
                     android:onClick="onClick"
                     android:text="@string/btn_min"
                     android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/button_tan"
+
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="@string/btn_tan"
+                    android:textSize="24sp" />
             </TableRow>
 
             <TableRow
@@ -245,6 +278,17 @@
                     android:onClick="onClick"
                     android:text="@string/btn_plus"
                     android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/button_par0"
+
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="@string/btn_par0"
+                    android:textSize="24sp" />
             </TableRow>
 
             <TableRow
@@ -273,15 +317,38 @@
                     android:text="@string/btn_clear_all"
                     android:textSize="24sp" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/button_sqrt"
 
-                <Space
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="@string/dtn_sqrt"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/button_p"
+
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="@string/btn_pot"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/button_par1"
+
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="@string/btn_par1"
+                    android:textSize="24sp" />
 
             </TableRow>
 
