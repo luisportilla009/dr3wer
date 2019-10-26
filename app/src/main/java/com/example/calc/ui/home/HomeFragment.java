@@ -228,7 +228,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         int i = 1;
         if (total.length() != 0) {
             while (total.charAt(total.length() - 1) != list_0.charAt(list_0.length() - i)
-                    && i != 12 ) i++;
+                    && i != 14 ) i++;
             return total.charAt(total.length() - 1) == list_0.charAt(list_0.length() - i);
 
         }
