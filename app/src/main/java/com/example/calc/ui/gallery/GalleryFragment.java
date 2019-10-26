@@ -1,5 +1,6 @@
 package com.example.calc.ui.gallery;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,8 +23,10 @@ import com.example.calc.R;
 public class GalleryFragment extends Fragment implements View.OnClickListener {
 
     private GalleryViewModel galleryViewModel;
-    private EditText et_name, et_valor;
-    //private Button bsave,bsearch;
+    private EditText et_name;
+    private EditText et_valor;
+    private TextView et_see;
+    //private Button bsave,bsearch,;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,9 +37,12 @@ public class GalleryFragment extends Fragment implements View.OnClickListener {
         bsearch.setOnClickListener(this);
         et_name= view.findViewById(R.id.text_letter);
         et_valor= view.findViewById(R.id.text_valor);
+        et_see= view.findViewById(R.id.text_see);
+
         return view;
     }
 
+    //@SuppressLint("SetTextI18n")
     private void save() {
         String name = et_name.getText().toString();
         String valor = et_valor.getText().toString();
@@ -44,9 +50,14 @@ public class GalleryFragment extends Fragment implements View.OnClickListener {
         SharedPreferences preferencias = this.getActivity().getSharedPreferences("agenda", Context.MODE_PRIVATE);
         SharedPreferences.Editor obj_editor = preferencias.edit();
         obj_editor.putString(name, valor);
-        obj_editor.commit();
+
+        et_see.append(name + " " + valor + "\r\n");
+
+        obj_editor.apply();
+
 
         Toast.makeText(this.getActivity(),"Number Saved",Toast.LENGTH_SHORT).show();
+
     }
 
     private void Search(){

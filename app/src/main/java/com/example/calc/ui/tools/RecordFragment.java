@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
+import android.app.Activity;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -20,34 +21,29 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.calc.R;
 
-public class ToolsFragment extends Fragment implements View.OnClickListener {
+import java.util.Map;
+
+public class RecordFragment extends Fragment implements View.OnClickListener {
 
     private ToolsViewModel toolsViewModel;
-    private RadioButton r_seg, r_rad, r_grad;
     private SharedPreferences preferencias;
+    private TextView operate_see;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tools, container, false);
+        Button clear = view.findViewById(R.id.btn_remove);
+        clear.setOnClickListener(this);
+        operate_see = view.findViewById(R.id.operations);
+        preferencias = this.getActivity().getSharedPreferences(
+                "operations", Context.MODE_PRIVATE);
+        Map<String, ?> cad = preferencias.getAll();
+        for (Map.Entry<String, ?> entry : cad.entrySet()) {
+            Log.d("map values", entry.getKey() + ": " + entry.getValue().toString());
+            operate_see.append(entry.getKey() + " = " + entry.getValue().toString() + "\r\n");
+        }
 
-        r_seg = view.findViewById(R.id.circle_DEG);
-        r_rad = view.findViewById(R.id.circle_rad);
-        r_grad = view.findViewById(R.id.circle_Grad);
-        Button save = view.findViewById(R.id.btn_tools);
-        save.setOnClickListener(this);
-        preferencias = this.getActivity().getSharedPreferences("btn",Context.MODE_PRIVATE);
-        if (r_seg.isChecked() == true)
-        r_seg.setChecked(preferencias.getBoolean("val",r_seg.isChecked()));
-        else if (r_rad.isChecked() == true)
-        r_rad.setChecked(preferencias.getBoolean("val",r_rad.isChecked()));
-        else if (r_grad.isChecked() == true)
-        r_grad.setChecked(preferencias.getBoolean("val",r_grad.isChecked()));
-        /*r_seg.setOnClickListener(this);
-        r_rad.setOnClickListener(this);
-        r_grad.setOnClickListener(this);
-        preferencias = this.getActivity().getSharedPreferences("bntChecked", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferencias.edit();
-        editor.putBoolean("bntChecked",r_seg.isChecked());*/
+
         return view;
     }
 
@@ -55,19 +51,15 @@ public class ToolsFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.btn_tools){
-            preferencias = this.getActivity().getSharedPreferences("btn", Context.MODE_PRIVATE);
+        if (view.getId() == R.id.btn_remove) {
+            preferencias = this.getActivity().getSharedPreferences(
+                    "operations", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferencias.edit();
-            if (r_seg.isChecked() == true)
-                editor.putBoolean("val",r_seg.isChecked());
-            else if (r_rad.isChecked() == true)
-                editor.putBoolean("val",r_rad.isChecked());
-            else if (r_grad.isChecked() == true)
-                editor.putBoolean("val",r_grad.isChecked());
-            editor.commit();
-
-
+            editor.clear();
+            editor.apply();
+            operate_see.setText("");
         }
+
         /*preferencias = this.getActivity().getSharedPreferences("bntChecked", Context.MODE_PRIVATE);
         SharedPreferences.Editor obj_edit = preferencias.edit();
         switch (view.getId()) {
